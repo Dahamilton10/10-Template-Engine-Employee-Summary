@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs-extra");
 const open = require("open");
 
+const generateHTML = ("./generateHTML")
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -56,7 +57,7 @@ function employeeRegistration() {
                 let newEmployee = new Intern(employeeName, employeeID, employeeEmail, data.school);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
-                if (data.addAnother == true){
+                if (data.addAnother == true) {
                     employeeRegistration();
                 }
             })
@@ -75,7 +76,7 @@ function employeeRegistration() {
                 let newEmployee = new Engineer(employeeName, employeeID, employeeEmail, data.github);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
-                if (data.addAnother == true){
+                if (data.addAnother == true) {
                     employeeRegistration();
                 }
             })
@@ -94,12 +95,22 @@ function employeeRegistration() {
                 let newEmployee = new Manager(employeeName, employeeID, employeeEmail, data.officeNumber);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
-                if (data.addAnother == true){
+                if (data.addAnother == true) {
                     employeeRegistration();
                 }
             })
         }
     })
+}
+
+function getSpecial(employee) {
+    if (employee.getRole == "Intern") {
+        return employee.getSchool();
+    } else if (employee.getRole == "Engineer") {
+        return employee.getGithub;
+    } else {
+        return employee.getOfficeNumber
+    }
 }
 
 

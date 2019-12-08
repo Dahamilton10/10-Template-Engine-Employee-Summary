@@ -1,5 +1,5 @@
 function htmlP1() {
-    `
+return    `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +66,7 @@ function htmlP2(employee) {
 }
 
 function htmlP3() {
-    `
+return    `
     </div>
     </main>
 </body>

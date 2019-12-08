@@ -9,6 +9,7 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 const employeeRoster = []
+let teamHTML = ""
 
 
 function employeeRegistration() {
@@ -59,6 +60,9 @@ function employeeRegistration() {
                 console.log("Added " + employeeName + " to the roster");
                 if (data.addAnother == true) {
                     employeeRegistration();
+                } else {
+                    teamHTML = `${htmlP1()} + ${htmlP2()} + ${htmlP3()}`
+                    writeToFile(teamHTML);
                 }
             })
 
@@ -78,6 +82,9 @@ function employeeRegistration() {
                 console.log("Added " + employeeName + " to the roster");
                 if (data.addAnother == true) {
                     employeeRegistration();
+                } else {
+                    teamHTML = `${htmlP1()} + ${htmlP2()} + ${htmlP3()}`
+                    writeToFile(teamHTML);
                 }
             })
 
@@ -97,6 +104,10 @@ function employeeRegistration() {
                 console.log("Added " + employeeName + " to the roster");
                 if (data.addAnother == true) {
                     employeeRegistration();
+                } else {
+                    console.log(generateHTML.htmlP1())
+                    // teamHTML = `${generateHTML.htmlP1()} + ${generateHTML.htmlP2(employeeRoster)} + ${generateHTML.htmlP3()}`
+                    // writeToFile(teamHTML);
                 }
             })
         }
@@ -113,5 +124,10 @@ function getSpecial(employee) {
     }
 }
 
+function writeToFile(data) {
+    fs.writeFile("team.html", data, function (err, data) {
+        if (err) console.log('error', err);
+    });
+}
 
 employeeRegistration();

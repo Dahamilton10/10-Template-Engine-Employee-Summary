@@ -47,10 +47,18 @@ function employeeRegistration() {
                 type: "input",
                 name: "school",
                 message: "What school did the intern go to?"
+            },
+            {
+                type: "confirm",
+                name: "addAnother",
+                message: "Would you like to add another team member?"
             }]).then(function (data) {
                 let newEmployee = new Intern(employeeName, employeeID, employeeEmail, data.school);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
+                if (data.addAnother == true){
+                    employeeRegistration();
+                }
             })
 
         } else if (data.role == "Engineer") {
@@ -58,10 +66,18 @@ function employeeRegistration() {
                 type: "input",
                 name: "github",
                 message: "What is this employees Github username?"
+            },
+            {
+                type: "confirm",
+                name: "addAnother",
+                message: "Would you like to add another team member?"
             }]).then(function (data) {
-                let newEmployee = new Intern(employeeName, employeeID, employeeEmail, data.github);
+                let newEmployee = new Engineer(employeeName, employeeID, employeeEmail, data.github);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
+                if (data.addAnother == true){
+                    employeeRegistration();
+                }
             })
 
         } else {
@@ -69,11 +85,22 @@ function employeeRegistration() {
                 type: "input",
                 name: "officeNumber",
                 message: "What is the office number of this employee?"
+            },
+            {
+                type: "confirm",
+                name: "addAnother",
+                message: "Would you like to add another team member?"
             }]).then(function (data) {
-                let newEmployee = new Intern(employeeName, employeeID, employeeEmail, data.officeNumber);
+                let newEmployee = new Manager(employeeName, employeeID, employeeEmail, data.officeNumber);
                 employeeRoster.push(newEmployee);
                 console.log("Added " + employeeName + " to the roster");
+                if (data.addAnother == true){
+                    employeeRegistration();
+                }
             })
         }
     })
 }
+
+
+employeeRegistration();

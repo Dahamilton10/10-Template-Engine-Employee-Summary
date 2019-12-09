@@ -1,5 +1,4 @@
-const htmlP1 = () => {
-    return `
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,44 +39,10 @@ const htmlP1 = () => {
     </div>
     <main>
         <div class="row col">
-`
-}
-
-let employeeHTML = "";
-
-const htmlP2 = (employee) => {
-    employee.forEach(function (e) {
-        let loopHTML =
-            `
-        <div class="card col" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${e.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${e.getRole()}</h6>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">${e.id}</li>
-                <li class="list-group-item">${e.email}</li>
-                <li class="list-group-item">${getSpecial(e)}</li>
-            </ul>
-        </div>
-        </div>
-        `
-        employeeHTML = `${employeeHTML}` + `${loopHTML}`
-    })
-}
-
-const htmlP3 = () =>{
-    return `
+ + undefined + 
     </div>
     </main>
 </body>
 
 </html>
-    `
-}
-
-module.exports = {
-    employeeHTML: employeeHTML,
-    htmlP1: htmlP1,
-    htmlP2: htmlP2,
-    htmlP3: htmlP3,
-}
+    

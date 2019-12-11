@@ -3,7 +3,6 @@ const fs = require("fs-extra");
 const open = require("open");
 
 const generateHTML = ("./generateHTML")
-const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
@@ -61,8 +60,7 @@ function employeeRegistration() {
                 if (data.addAnother == true) {
                     employeeRegistration();
                 } else {
-                    teamHTML = `${htmlP1()} + ${htmlP2()} + ${htmlP3()}`
-                    writeToFile(teamHTML);
+                    writeToFile(page);
                 }
             })
 
@@ -83,8 +81,7 @@ function employeeRegistration() {
                 if (data.addAnother == true) {
                     employeeRegistration();
                 } else {
-                    teamHTML = `${htmlP1()} + ${htmlP2()} + ${htmlP3()}`
-                    writeToFile(teamHTML);
+                    writeToFile(page);
                 }
             })
 
@@ -105,9 +102,7 @@ function employeeRegistration() {
                 if (data.addAnother == true) {
                     employeeRegistration();
                 } else {
-                    teamHTML = `${htmlP1()} + ${htmlP2(employeeRoster)} + ${htmlP3()}`
-                    console.log(employeeRoster);
-                    console.log(teamHTML);
+                    writeToFile(page);
                 }
             })
         }
@@ -130,7 +125,6 @@ function writeToFile(data) {
     });
 }
 
-employeeRegistration();
 
 
 
@@ -140,6 +134,55 @@ employeeRegistration();
 
 
 
+const generatePage = () => {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Employee Roster</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: white;
+                -webkit-print-color-adjust: exact !important;
+                font-family: 'Cabin', sans-serif;
+            }
+    
+            main {
+                background-color: white;
+                height: auto;
+                padding-right: 5%;
+                padding-left: 5%;
+                flex-wrap: auto;
+            }
+    
+            .col {
+                flex: 1;
+                text-align: center;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>
+            <nav class="navbar navbar-dark bg-dark">
+                <a class="navbar-brand">Employee Roster</a>
+            </nav>
+        </div>
+        <main>
+            <div class="row col">
+            </div>
+        </main>
+    </body>
+    
+    </html>
+`
+}
 
 
 
@@ -220,3 +263,11 @@ const htmlP3 = () => {
 </html>
     `
 }
+
+
+
+
+
+
+const page = generatePage();
+employeeRegistration();

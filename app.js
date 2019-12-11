@@ -98,6 +98,8 @@ function employeeRegistration() {
             }]).then(function (data) {
                 let newEmployee = new Manager(employeeName, employeeID, employeeEmail, data.officeNumber);
                 employeeRoster.push(newEmployee);
+                console.log(employeeRoster);
+                console.log(JSON.stringify(employeeRoster));
                 console.log("Added " + employeeName + " to the roster");
                 if (data.addAnother == true) {
                     employeeRegistration();
@@ -178,6 +180,18 @@ const generatePage = () => {
             <div class="row col">
             </div>
         </main>
+
+
+
+
+        <script type="text/javescript">
+            let employeeRoster = ${JSON.stringify(employeeRoster)};
+    
+    
+    
+        </script>
+
+
     </body>
     
     </html>
